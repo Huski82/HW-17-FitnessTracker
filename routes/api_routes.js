@@ -1,9 +1,9 @@
 const Workout = require("../models/workout.js");
 const express = require("express");
-const router = express.Router();
+const app = express.Router();
 
 
-router.get("/api/workouts", (req, res) => {
+app.get("/api/workouts", (req, res) => {
 	Workout.find({});
 	Workout.aggregate([
 		{
@@ -23,7 +23,7 @@ router.get("/api/workouts", (req, res) => {
 		});
 });
 
-router.post("/api/workouts", (req, res) => {
+app.post("/api/workouts", (req, res) => {
 	Workout.create({})
 		.then((dbWorkout) => {
 			res.json(dbWorkout);
@@ -33,7 +33,7 @@ router.post("/api/workouts", (req, res) => {
 		});
 });
 
-router.put("/api/workouts/:id", (req, res) => {
+app.put("/api/workouts/:id", (req, res) => {
 	console.log("Params", req.body, req.params);
 
 	Workout.findOneAndUpdate(
@@ -49,7 +49,7 @@ router.put("/api/workouts/:id", (req, res) => {
 		});
 });
 
-router.get("/api/workouts/range", (req, res) => {
+app.get("/api/workouts/range", (req, res) => {
 	Workout.find({});
 	Workout.aggregate([
 		{
@@ -73,4 +73,4 @@ router.get("/api/workouts/range", (req, res) => {
 
 
 
-module.exports = router;
+module.exports = app;
