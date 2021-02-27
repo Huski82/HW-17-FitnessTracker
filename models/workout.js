@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-// all data info needed was in seed.js
+
 const workoutSchema = new Schema({
     exercises: [{
         type: {
